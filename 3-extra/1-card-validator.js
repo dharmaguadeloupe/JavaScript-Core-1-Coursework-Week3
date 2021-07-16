@@ -30,7 +30,7 @@ function checkLength(array) {
 
 //check if numbers are different
 function ifDifferent(array) {
-  return array.every((num) => num === array[0]);
+  return !array.every((num) => num === array[0]);
 }
 
 //check if last digit is even number
@@ -61,12 +61,11 @@ function validateCreditCardNumber(cardNumber) {
 //*Own test suite
 
 const firstCard = "11223344556677888"; //more than 16 digits
-const secondCard = "9999777788880000"; //valid
-const thirdCard = "6666666666661666"; //valid
-const fourthCard = "a92332119c011112"; //invalid(invalid characters)
-const fifthCard = "4444444444444444"; //invalid(only one type of number)
-const sixthCard = "1111111111111110"; //invalid(sum less than 16)
-const seventhCard = "6666666666666661"; //invalid(off final number)
+const secondCard = "6666666666661666"; //valid
+const thirdCard = "a92332119c011112"; //invalid(invalid characters)
+const fourthCard = "4444444444444444"; //invalid(only one type of number)
+const fifthCard = "1111111111111110"; //invalid(sum less than 16)
+const sixthCard = "6666666666666661"; //invalid(off final number)
 
 
 
@@ -77,7 +76,7 @@ test("Card validator Case 2", () => {
   expect(validateCreditCardNumber(secondCard)).toEqual(true);
 });
 test("Card validator Case 3", () => {
-  expect(validateCreditCardNumber(thirdCard)).toEqual(true);
+  expect(validateCreditCardNumber(thirdCard)).toEqual(false);
 });
 test("Card validator Case 4", () => {
   expect(validateCreditCardNumber(fourthCard)).toEqual(false);
@@ -88,8 +87,6 @@ test("Card validator Case 5", () => {
 test("Card validator Case 6", () => {
   expect(validateCreditCardNumber(sixthCard)).toEqual(false);
 });
-test("Card validator Case 7", () => {
-  expect(validateCreditCardNumber(seventhCard)).toEqual(false);
-});
+
 
 
